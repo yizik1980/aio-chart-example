@@ -1,2 +1,2 @@
 # dotnet core simple api project
-# with angular tree graphs
+# with angular multiple charts layout
