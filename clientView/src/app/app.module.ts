@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { LayoutModule } from './layout/layout.module';
     BrowserModule,
     HttpClientModule,
     LayoutModule,
-
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

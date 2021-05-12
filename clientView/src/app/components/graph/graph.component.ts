@@ -27,10 +27,23 @@ export class GraphComponent implements OnInit, OnChanges {
       let val2 = Number(Math.floor(256 * Math.random())).toString(16);
       let val3 = Number(Math.floor(256 * Math.random())).toString(16);
       return `#${val1}${val2}${val3}`;
-    })
+    });
     if (data && labels && chartType && canvas) {
       const dataset = [
         {
+          type:'bar',
+          data,
+          labels,
+          backgroundColor
+        },
+        {
+          type:'line',
+          data,
+          labels,
+          backgroundColor
+        },
+        {
+          type:'scatter',
           data,
           labels,
           backgroundColor
@@ -38,9 +51,8 @@ export class GraphComponent implements OnInit, OnChanges {
       ];
       const context = this.canvas.nativeElement.getContext('2d');
       this.canvas.nativeElement.height = 260;
-      console.log(backgroundColor);
       const chartCanvas = new Chart(context, {
-        type: chartType || "line",
+      //  type: chartType || "line",
         data: {
           datasets: dataset,
           labels,
