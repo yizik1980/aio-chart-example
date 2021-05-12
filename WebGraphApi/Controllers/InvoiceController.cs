@@ -24,16 +24,19 @@ namespace WebGraphApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Invoice> Get()
+        public async Task<IEnumerable<Invoice>> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 7).Select(index => new Invoice
+            return await  Task.Run( ()=>
             {
-                Date = DateTime.Now.AddDays(index),
-                Price = rng.Next(-20, 55) * Math.Round(rng.NextDouble(),2),
-                Description = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                return Enumerable.Range(1, 10).Select(index => new Invoice
+                {
+                    Date = DateTime.Now.AddDays(index),
+                    Price = rng.Next(-20, 55) * Math.Round(rng.NextDouble(), 2),
+                    Description = Summaries[rng.Next(Summaries.Length)]
+                }).ToArray();
+            }
+            );
         }
     }
 }
